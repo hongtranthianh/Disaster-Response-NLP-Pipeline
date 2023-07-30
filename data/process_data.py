@@ -62,7 +62,7 @@ def save_data(df, database_filename):
     Save the clean dataset into an sqlite database
     '''
     engine = create_engine('sqlite:///{}'.format(database_filename))
-    df.to_sql(database_filename, engine, index=False, if_exists = 'replace')
+    df.to_sql('DisasterResponseTable', engine, index=False, if_exists = 'replace')
 
     return  
 
