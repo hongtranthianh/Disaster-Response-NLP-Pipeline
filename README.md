@@ -15,9 +15,15 @@
 
 ## Project Description<a name="description"></a>
 
-During disaster events like earthquake, volcano, floods, etc, there are several messages sent by people who are suffering from disasters and need emergency aid. This project is to create an app that use a machine learning pipeline to categorize these messages so that you can send the messages to an appropriate disaster relief agency.
+<p>During disaster events like earthquake, volcano, floods, etc, there are several messages sent by people who are suffering from disasters and need emergency aid. This project is to create an app that use a machine learning pipeline to categorize these messages so that you can send the messages to an appropriate disaster relief agency.</p>
 
+<p>The dataset is provided by [Figure Eight](https://appen.com/)</p>
 
+Process to facilitate this project:
+- Build an ETL pipeline to read the dataset, clean the data, and then store it in a SQLite database
+[process_data.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/data/process_data.py)
+- Build an ML pipeline that take the `message` column as input and output classification results on the other 36 categories in the dataset based on [MultiOutputClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html)
+- Build a Flask web app to display the result
 
 ## File Structure <a name="files"></a>
 
@@ -47,13 +53,14 @@ During disaster events like earthquake, volcano, floods, etc, there are several 
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        ```python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db```
     - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/tuned_model.pkl`
+        ```python models/train_classifier.py data/DisasterResponse.db models/tuned_model.pkl```
 
 2. Go to `app` directory: `cd app`
 
-3. Run web app: `python run.py`
+3. Run web app
+```python run.py```
 
 The running result should look like this image
 <p ><img src="Images/app-running-result.png" alt="image" ></p>
@@ -66,9 +73,5 @@ This is a short screenshort of the web app
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-Data is directly taken from [StackOverflow](https://insights.stackoverflow.com/survey/) and licensed under the [ODbL license](https://opendatacommons.org/licenses/odbl/1-0/).
-
-TLDR: Free to use the data
-
-Feel free to use the code here as you would like.
+Free to use the data and the code here as you would like.
 
