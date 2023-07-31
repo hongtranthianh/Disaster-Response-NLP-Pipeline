@@ -17,12 +17,13 @@
 
 <p>During disaster events like earthquake, volcano, floods, etc, there are several messages sent by people who are suffering from disasters and need emergency aid. This project is to create an app that use a machine learning pipeline to categorize these messages so that you can send the messages to an appropriate disaster relief agency.</p>
 
-<p>The dataset is provided by [Figure Eight](https://appen.com/)</p>
+The dataset is provided by [Figure Eight](https://appen.com/)
 
 Process to facilitate this project:
 - Build an ETL pipeline to read the dataset, clean the data, and then store it in a SQLite database
-[process_data.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/data/process_data.py)
+  + Visit [process_data.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/data/process_data.py)
 - Build an ML pipeline that take the `message` column as input and output classification results on the other 36 categories in the dataset based on [MultiOutputClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html)
+  + Visit [train_classifier.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/models/train_classifier.py)
 - Build a Flask web app to display the result
 
 ## File Structure <a name="files"></a>
@@ -67,7 +68,7 @@ The running result should look like this image
 
 4. Click the `http://192.168.1.8:3000/` to open the homepage
 
-This is a short screenshort of the web app
+Here is a screenshort of the web app
 <p ><img src="Images/web-app.png" alt="image" ></p>
 
 
