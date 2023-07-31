@@ -32,8 +32,8 @@ df = pd.read_sql_table('DisasterResponseTable', engine)
 
 
 # load model
-model = joblib.load("Disaster-Response-Pipeline/models/tuned_model.pkl")
-
+# model = joblib.load("../models/tuned_model.pkl")
+model = joblib.load("D:/UDACITY/Data Scientist/Lesson 2 - Data engineering/Project 2/Disaster-Response-Pipeline/models/tuned_model.pkl")
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
@@ -41,10 +41,16 @@ model = joblib.load("Disaster-Response-Pipeline/models/tuned_model.pkl")
 def index():
     
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # genre count
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+    # categorie distribution of direct messages
+    direct_genre_df = df[df['genre']=='direct']
+    cats_df = direct_genre_df.drop(["id", "message", "original", "genre"], axis=1)
+    cats_count = cats_df.sum().sort_values(ascending=True)
+    cats_name = list(cats_count.index)
+
+
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -52,7 +58,8 @@ def index():
             'data': [
                 Bar(
                     x=genre_names,
-                    y=genre_counts
+                    y=genre_counts,
+                    marker=dict(color='#15bea2')
                 )
             ],
 
@@ -63,6 +70,25 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=cats_count,
+                    y=cats_name,
+                    orientation='h',
+                    marker=dict(color='#15bea2')
+                )
+            ],
+            'layout': {
+                'title': "Category distribution of direct messages",
+                'yaxis': {
+                    'title': "Category"
+                },
+                'xaxis': {
+                    'title': "Count"
                 }
             }
         }
