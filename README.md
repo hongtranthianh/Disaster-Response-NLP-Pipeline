@@ -19,7 +19,7 @@
 
 1. [Installation](#installation)
 2. [Project Motivation](#motivation)
-3. [File Descriptions](#files)
+3. [File Structure](#files)
 4. [Results](#results)
 5. [Licensing, Authors, and Acknowledgements](#licensing)
 
@@ -33,10 +33,11 @@
 During disaster events like earthquake, volcano, floods, etc, there are several messages sent by people who are suffering from disasters and need emergency aid. This project is to create an app that use a machine learning pipeline to categorize these messages so that you can send the messages to an appropriate disaster relief agency.
 
 
-## File Descriptions <a name="files"></a>
+## File Structure <a name="files"></a>
 
 Here's the file structure of the project:
 
+```
 - app
 | - template
 | |- master.html  # main page of web app
@@ -54,7 +55,7 @@ Here's the file structure of the project:
 |- classifier.pkl  # saved model 
 
 - README.md
-
+```
 
 
 <!-- Due to file size limit in Github, Stack Overflow survey data couldn't be pushed to this repo. You can download the full set of data [here](https://info.stackoverflowsolutions.com/rs/719-EMH-566/images/stack-overflow-developer-survey-2022.zip)
