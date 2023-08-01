@@ -20,10 +20,8 @@
 The dataset is provided by [Figure Eight](https://appen.com/)
 
 Process to facilitate this project:
-- Build an ETL pipeline to read the dataset, clean the data, and then store it in a SQLite database
-  + Visit [process_data.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/data/process_data.py)
-- Build an ML pipeline that take the `message` column as input and output classification results on the other 36 categories in the dataset based on [MultiOutputClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html)
-  + Visit [train_classifier.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/models/train_classifier.py)
+- Build an ETL pipeline ([process_data.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/data/process_data.py)) to read the dataset, clean the data, and then store it in a SQLite database
+- Build an ML pipeline ([train_classifier.py](https://github.com/hongtranthianh/Disaster-Response-Pipeline/blob/main/models/train_classifier.py)) that take the `message` column as input and output classification results on the other 36 categories in the dataset based on [MultiOutputClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputClassifier.html)
 - Build a Flask web app to display the result
 
 ## File Structure <a name="files"></a>
@@ -39,11 +37,11 @@ Process to facilitate this project:
 - data
 |- disaster_categories.csv  # data to process 
 |- disaster_messages.csv  # data to process
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+|- process_data.py # ETL pipeline
+|- DisasterResponse.db   # database to save clean data to
 
 - models
-|- train_classifier.py
+|- train_classifier.py # ML pipeline
 |- classifier.pkl  # saved model 
 
 - README.md
@@ -54,14 +52,15 @@ Process to facilitate this project:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
-        + ```python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db```
+
+      ```python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db```
     - To run ML pipeline that trains classifier and saves
-        + ```python models/train_classifier.py data/DisasterResponse.db models/tuned_model.pkl```
+
+      ```python models/train_classifier.py data/DisasterResponse.db models/tuned_model.pkl```
 
 2. Go to `app` directory: `cd app`
 
-3. Run web app
-    - ```python run.py```
+3. Run web app: ```python run.py```
 
 The running result should look like this image
 <p ><img src="Images/app-running-result.png" alt="image" ></p>
